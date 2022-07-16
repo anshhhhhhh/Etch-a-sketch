@@ -21,7 +21,8 @@ function makeGrid(rowsnum, columns){
             cell.style.width=(935/columns)-1+"px";
             cell.style.height=(935/columns)-1+"px";
             cell.addEventListener("mouseover", ()=>{
-                cell.style.background ="black";
+                cell.style.background = generateRandomColor();
+
             })
         }
        row.style.height=(935/columns)-1+"px";
@@ -35,6 +36,18 @@ reset.addEventListener('click', ()=>{
         container.removeChild(container.firstElementChild);
     }
     a = window.prompt("Enter new grid length:");
+    if(a>=100){
+       a = window.prompt("Enter a value less than 100:")
+    }
     makeGrid(a,a);
     
 })
+
+function generateRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+    color += letters[Math. floor(Math. random() * 16)];
+    }
+    return color;
+    }
